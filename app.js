@@ -689,11 +689,11 @@ function focusHorror(on) {
       .transition().duration(600)
       .attr("width", d => xBar(d.count) - leftForBars);
 
-    // tooltips
+     // tooltips
     gChart.selectAll("rect")
       .on("mouseover", (_, d) => {
-        const description = FEAR_CATEGORY_DESCRIPTIONS[d.fear] || "";
         const displayName = getDisplayName(d.fear);
+        const description = FEAR_CATEGORY_DESCRIPTIONS[d.fear] || "";
         tooltip.style("opacity", 1).html(
           `<strong>${displayName}</strong><br/>
            Total movies: ${d.count}
