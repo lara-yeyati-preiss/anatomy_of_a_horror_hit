@@ -32,9 +32,9 @@ Finally, it traces horror’s **recurring fear patterns**, inviting users to exp
 
 
 
-<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/c9993d96-1036-44d1-8e30-b8be3ca2baf0" />
-<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/0f45fbfc-f9e2-42f8-98c0-3a5b4d74fbd5" />
-<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/c87472a2-7085-438d-9686-4751074a0a0e" />
-<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/fa82602c-0c6b-4e71-81fc-2bd24b8e5b62" />
-<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/5097e32a-f9ab-46e6-beb7-9f37936360ae" />
-<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/37f47c2a-c952-48d5-bfe1-0b26f8bb546a" />
+<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/df116740-42e8-4a0e-9d56-491eab0cff20" />
+<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/4199630e-f497-4a96-9a70-b5d7488bf97d" />
+<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/f7d09960-8a90-4623-b28a-c8dce812ef39" />
+<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/36742e4a-3add-4284-b638-4b3ab9ee47d7" />
+<img width="1721" height="868" alt="image" src="https://github.com/user-attachments/assets/0d85d69f-3853-4255-ab2f-2c870c264d0c" />
+
