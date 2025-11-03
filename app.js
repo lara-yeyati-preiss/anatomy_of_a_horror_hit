@@ -99,7 +99,7 @@ const FEAR_GROUP_MAP = new Map([
   ["Persecution & Social Breakdown", "Societal & Structural Horrors"],
   ["Institutional & Structural Control", "Societal & Structural Horrors"],
 
-  // The Body as Battleground
+  // Physical Horrors
   ["Captivity & Voyeuristic Sadism", "The Body as Battleground"],
   ["Contagion & Mutation", "The Body as Battleground"],
   ["Body Horror / Envelope Violation", "The Body as Battleground"],
@@ -693,8 +693,9 @@ function focusHorror(on) {
     gChart.selectAll("rect")
       .on("mouseover", (_, d) => {
         const description = FEAR_CATEGORY_DESCRIPTIONS[d.fear] || "";
+        const displayName = getDisplayName(d.fear);
         tooltip.style("opacity", 1).html(
-          `<strong>${d.fear}</strong><br/>
+          `<strong>${displayName}</strong><br/>
            Total movies: ${d.count}
            <div style="font-size: 13px; line-height: 1.5; margin: 8px 0; color: #666;">${description}</div>`
         );
