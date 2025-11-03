@@ -175,7 +175,7 @@ html {
   column-gap: 28px;                   /* visual separation between chart and copy */
   width: 100%;
   max-width: 1400px;                  /* containing width (works with body gutter) */
-  margin: 24px 0;                     /* align left edge to the body gutter */
+  margin: 24px 0 24px 120px;          /* left margin for viz, vertical margins for spacing */
   align-items: start;                 /* top-align both columns */
 }
 
