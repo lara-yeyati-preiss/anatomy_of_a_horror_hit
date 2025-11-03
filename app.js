@@ -94,22 +94,22 @@ async function main() {
   // supergroups of fear categories
   // groups the 11 categories into 4 thematic families
 const FEAR_GROUP_MAP = new Map([
-  // 🟢 Societal & Structural Horrors
+  // Societal & Structural Horrors
   ["Invasion, Impostors & Paranoia", "Societal & Structural Horrors"],
   ["Persecution & Social Breakdown", "Societal & Structural Horrors"],
   ["Institutional & Structural Control", "Societal & Structural Horrors"],
 
-  // 🔴 The Body as Battleground
+  // The Body as Battleground
   ["Captivity & Voyeuristic Sadism", "The Body as Battleground"],
   ["Contagion & Mutation", "The Body as Battleground"],
   ["Body Horror / Envelope Violation", "The Body as Battleground"],
 
-  // 🔵 Psychological & Internal Horrors
+  // Psychological & Internal Horrors
   ["Possession & Loss of Agency", "Psychological & Domestic Horrors"],
   ["Isolation & Psychological Unraveling", "Psychological & Domestic Horrors"],
   ["Grief & Familial Trauma", "Psychological & Domestic Horrors"],
 
-  // ⚫ Cosmic & Moral Reckonings
+  // Cosmic & Moral Reckonings
   ["Ecological / Natural Menace", "Cosmic & Moral Reckonings"],
   ["Transgression & Moral Punishment", "Cosmic & Moral Reckonings"]
 ]);
