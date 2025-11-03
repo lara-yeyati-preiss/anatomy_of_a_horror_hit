@@ -75,7 +75,7 @@ async function main() {
     "Contagion & Mutation":
       "Fear of infection or involuntary biological transformation — viruses, parasites, or spreading contamination altering the body.",
 
-    "Body Horror / Envelope Violation":
+    "Body Horror":
       "Fear of bodily invasion, forced metamorphosis, or dismemberment — the body violated or remade beyond recognition.",
 
     "Ecological / Natural Menace":
