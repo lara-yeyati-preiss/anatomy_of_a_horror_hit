@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- head -->
+  <meta charset="utf-8" />
+  <title>Anatomy of a Horror Hit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- fonts: serif for titles; sans for UI and labels -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- design system styles -->
+  <link rel="stylesheet" href="./styles.css" />
+
+</head>
+<body>
+
+  <!-- hero intro section: full-viewport panel introducing the project title and subtitle -->
+  <section class="hero-intro">
+    <div class="hero-inner" aria-labelledby="hero-title">
+      <h1 id="hero-title" class="hero-title">Anatomy of a Horror Hit</h1>
+      <p class="hero-sub">
+        Horror films are a cultural barometer—capturing, distorting, and projecting our fears back to us. 
+        Using Netflix’s Engagement Report (Jan–Jun 2025), this project examines what the most-watched horror movies reveal about contemporary anxieties.
+      </p>
+    </div>
+
+    <!-- down arrow button: triggers smooth scroll to the graph/chart section via JS -->
+    <button id="to-graph" class="hero-arrow" aria-label="Scroll to chart">
+      <svg viewBox="0 0 24 24" width="32" height="32" fill="none"
+           stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </section>
+
+  <!-- two-column layout for scroll-driven storytelling:
+    - left: sticky chart visualization
+    - right: narrative text cards that trigger scene changes
+  -->
+  <div class="two-col">
+    <!-- left column: sticky chart container -->
+    <div class="viz-wrap" id="graph">
+      <figure class="graphic">
+        <div class="sticky-inner">
+          <!-- methodology button: opens modal with methodology details -->
+          <button id="methodology-btn" class="methodology-btn">Methodology</button>
+          <div class="chart-head">
+            <!-- chart title: changes dynamically per scene via JS -->
+            <h2 id="chart-title">The Hit Matrix</h2>
+            <!-- chart subtitle: also changes in bar chart scenes -->
+            <p id="chart-subtitle" class="subtitle">A Genre Analysis of Netflix’s Most-Watched Movies (Jan–Jun 2025)</p>
+            <p class="subtitle-little">
+              Data: Netflix Engagement Report &nbsp;·&nbsp;
+              OMDb API &nbsp;·&nbsp;
+              TMDB API
+            </p>
+          </div>
+
+          <!-- svg chart canvas: visualization rendered here, sized via viewBox -->
+          <svg id="viz" viewBox="0 0 1000 720"
+               role="img"
+               aria-label="A chart that transitions between a scatter of genres and bars by fear category.">
+          </svg>
+
+          <!-- shared tooltip: appears on hover in chart -->
+          <div class="tooltip" aria-hidden="true"></div>
+
+          <!-- fine note: only shown for scatter plot, hidden otherwise -->
+          <p class="fine-note note-hidden">
+            Note: A single movie can belong to multiple genres. As a result, the total number of movies represented
+            in the chart is greater than the unique number of titles in the dataset.
+          </p>
+        </div>
+      </figure>
+    </div>
+
+    <!-- right column: narrative cards (steps) for scroll-driven scenes -->
+    <section class="steps" aria-label="Story notes">
+      <!-- step 1: baseline scene, introduces the quadrant chart -->
+      <div class="step is-active" data-scene="baseline" data-title="The Hit Matrix">
+        <p>
+          <strong>Not all hits are the same.</strong>
+          <br><br>If we look at plot <strong>popularity</strong> (total views) against <strong>critical reception</strong> (IMDb rating), we can divide them into four families:
+      <em>Prestige Powerhouses</em>, <em>Crowd Magnets</em>, <em>Critical Darlings</em>, and <em>Cult Gems</em>.
+        </p>
+      </div>
+
+<!-- step 2: high-views scene, highlights genres above mean views line -->
+<div class="step with-posters" data-scene="high-views" data-title="The Hit Matrix">
+  <p>
+    <strong>Comedy</strong>, <strong>action</strong>, and <strong>drama</strong> dominate audience size—the first two draw mixed reviews, while drama edges into the high-rating, high-viewership quadrant on the top right.
+  </p>
+</div>
+
+<!-- movie posters for high-views: shows top three most watched movies overall -->
+<div class="movie-posters-section with-step">
+  <h3 class="posters-title">Top three most watched overall</h3>
+  <div class="posters-grid">
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BMWQ4YWYxYTAtZTlhNC00Nzc3LWE3OWUtZjY5MThlNWNiYTBiXkEyXkFqcGc@._V1_SX300.jpg" alt="Back in Action poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Back in Action</div>
+        <div class="movie-genre">Action, Comedy</div>
+        <div class="movie-views">164.7M views</div>
+        <div class="movie-rating">IMDb: 5.9/10</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BNmZjOTU5MGQtYTcyMi00ZGJjLTk4NzQtZTcwMmI0MTczNTUwXkEyXkFqcGc@._V1_SX300.jpg" alt="STRAW poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">STRAW</div>
+        <div class="movie-genre">Drama, Thriller</div>
+        <div class="movie-views">102.9M views</div>
+        <div class="movie-rating">IMDb: 6.5/10</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BMjNhNzUyMTQtYTFiZS00NzM2LWI3YTgtZmI1ZTA1MDUzMzBhXkEyXkFqcGc@._V1_SX300.jpg" alt="The Life List poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">The Life List</div>
+        <div class="movie-genre">Comedy, Drama, Romance</div>
+        <div class="movie-views">95.5M views</div>
+        <div class="movie-rating">IMDb: 6.8/10</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- step 3: critical-darlings scene, highlights bottom-right quadrant -->
+<div class="step with-posters" data-scene="critical-darlings" data-title="The Hit Matrix">
+  <p>
+    <strong>Bottom-right is the high-end zone</strong>: fewer titles, strong acclaim: <strong>documentary</strong>, <strong>history</strong>, <strong>biography</strong>.
+  </p>
+</div>
+
+<!-- movie posters for critical-darlings: shows top movies by IMDb rating -->
+<div class="movie-posters-section with-step">
+  <h3 class="posters-title">Top critical darlings by IMDb rating</h3>
+  <div class="posters-grid">
+    <div class="movie-poster-item">
+      <img src="assets/moro.jpg" alt="Moro poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Moro</div>
+        <div class="movie-genre">Documentary</div>
+        <div class="movie-views">100K views</div>
+        <div class="movie-rating">IMDb: 9.3/10</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BNGRmODY4NjktNjM1ZC00MTgwLWE3ZTUtNzRkM2U3YTBiZTE3XkEyXkFqcGdeQXVyMTE4MjAyODk@._V1_SX300.jpg" alt="The Mediterranean Sea poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">The Mediterranean Sea // Laut Tengah</div>
+        <div class="movie-genre">Documentary</div>
+        <div class="movie-views">1.3M views</div>
+        <div class="movie-rating">IMDb: 9.2/10</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BNjM1ZDQxYWUtMzQyZS00MTE1LWJmZGYtNGUyNTdlYjM3ZmVmXkEyXkFqcGc@._V1_SX300.jpg" alt="Schindler's List poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Schindler's List</div>
+        <div class="movie-genre">Biography, Drama, History</div>
+        <div class="movie-views">1.4M views</div>
+        <div class="movie-rating">IMDb: 9.0/10</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- step 4: horror scene, dims all but horror bubbles and changes title -->
+<div class="step with-posters" data-scene="horror" data-title="Horror in the Hit Matrix">
+  <p>
+    The lower-left is the cult corner, and <strong>horror</strong> is its poster child: lower budgets, strong identity, small and loyal audiences. 
+    <br><br>The lower average rating of all.
+  </p>
+</div>
+
+<!-- horror statistics section: shows average rating and views for horror genre -->
+<div class="horror-stats-section">
+  <h3 class="horror-genre-title">Horror genre</h3>
+  
+  <div class="horror-stat">
+    <h4 class="stat-label">Average IMDb rating</h4>
+    <p class="stat-value">5.7/10</p>
+  </div>
+  
+  <div class="horror-stat">
+    <h4 class="stat-label">Average views by movie</h4>
+    <p class="stat-value">1.4M</p>
+  </div>
+</div>
+
+<!-- horror movies by rating: shows most watched horror movies sorted by rating -->
+<div class="movie-posters-section horror-posters-first">
+  <h4 class="posters-subtitle">Most watched horror movies by rating</h4>
+  <div class="posters-grid">
+    <div class="movie-poster-item">
+      <img src="assets/night_silence.jpg" alt="Night Silence poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">NIGHT SILENCE // CISZA NOCNA</div>
+        <div class="movie-rating">IMDb: 8.6/10</div>
+        <div class="movie-views">300K views</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BYjZhMzFiZjItODA3ZC00MmRhLWIzMGYtMmVjOWUwYTA3MTRjXkEyXkFqcGc@._V1_SX300.jpg" alt="Psycho poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Psycho (1960)</div>
+        <div class="movie-rating">IMDb: 8.5/10</div>
+        <div class="movie-views">400K views</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BZDQ2Njc2YjItNTFjOC00NWM1LWEzMWUtZDE1YjA1NDllYmY0XkEyXkFqcGc@._V1_SX300.jpg" alt="Jwanita poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Jwanita</div>
+        <div class="movie-rating">IMDb: 8.2/10</div>
+        <div class="movie-views">100K views</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- horror movies by views: shows most watched horror movies sorted by views -->
+<div class="movie-posters-section">
+  <h4 class="posters-subtitle">Most watched horror movies by views</h4>
+  <div class="posters-grid">
+    <div class="movie-poster-item">
+      <img src="assets/number_24.jpg" alt="Number 24 poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Number 24</div>
+        <div class="movie-views">24.2M views</div>
+        <div class="movie-rating">IMDb: 4.8/10</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BNjJlMDJjZTctNDlkYi00YTNmLWIyZjUtZjdmZTFhNDQwMTQ4XkEyXkFqcGc@._V1_SX300.jpg" alt="Fear Street: Prom Queen poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Fear Street: Prom Queen</div>
+        <div class="movie-views">22.9M views</div>
+        <div class="movie-rating">IMDb: 5.1/10</div>
+      </div>
+    </div>
+    
+    <div class="movie-poster-item">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTA2MjA3ODU0NjBeQTJeQWpwZ15BbWU4MDE3NTQxNDcz._V1_SX300.jpg" alt="Ma poster" class="poster-img">
+      <div class="movie-poster-info">
+        <div class="movie-title">Ma (2019)</div>
+        <div class="movie-views">22.5M views</div>
+        <div class="movie-rating">IMDb: 5.6/10</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- step 5: horror-zoom scene, zooms in on horror genre and prepares for bar chart -->
+<div class="step" data-title="Horror in the Hit Matrix" data-scene="horror-zoom" data-fx="prebars">
+  <p>
+    As genres blur and intertwine, horror holds onto its base.
+    <br><br>
+    Most titles orbit around a set of core fears, transversal across time and contexts. <br><br><strong>So what, exactly, are we afraid of?</strong>
+  </p>
+</div>
+
+      <!-- step 6: bar chart scene, introduces core fear categories -->
+      <div class="step with-posters" data-scene="bars" data-title="What Are We Afraid of?">
+        <p>
+          Beneath the variety of monsters and myths, horror keeps returning to the same primal fears: <strong>who we are, what we control, and how easily both can be taken away.</strong>
+        <br><br>These fears can be grouped—imperfectly—into broader families that trace different dimensions of our core anxieties.
+        <br><br><span class="chart-note">Hover over each bar to see its definition. Click <em>Methodology</em> (upper right) to read about how films were classified.</span>
+      </p>
+      </div>
+
+      <!-- step 7: societal & structural horrors supergroup, highlights related bars -->
+      <div class="step with-posters" data-scene="bars_societal" data-title="What Are We Afraid of?">
+        <h3 class="supergroup-title">Societal & Structural Horrors</h3>
+        <p>
+          Systems of order can become instruments of fear. Through surveillance, manipulation, or collapse, institutions, power structures, and unseen networks reveal the violence hidden within order itself.
+        </p>
+      </div>
+
+      <!-- example movies for societal & structural horrors: shows three representative films -->
+      <div class="movie-posters-section with-step">
+        <div class="posters-grid">
+          <!-- Invasion, Impostors & Paranoia -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BMzhkMjFkN2YtODU2Ni00YWYwLWExN2MtOWNjZmQxM2U4YTM5XkEyXkFqcGc@._V1_SX300.jpg" alt="Us" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Us</div>
+              <div class="poster-category-label">Invasion, Impostors & Paranoia</div>
+            </div>
+          </div>
+          
+          <!-- Persecution & Social Breakdown -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BZjZmMDY4MzItYzVhOC00YmQ5LWFjMDgtYzk5ZDY1ZTFmN2ZjXkEyXkFqcGc@._V1_SX300.jpg" alt="The First Purge" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">The First Purge</div>
+              <div class="poster-category-label">Persecution & Social Breakdown</div>
+            </div>
+          </div>
+          
+          <!-- Institutional & Structural Control -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SX300.jpg" alt="Get Out" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Get Out</div>
+              <div class="poster-category-label">Institutional & Structural Control</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- keywords section for societal & structural horrors: dynamically filled with top keywords -->
+      <div class="keywords-section with-step">
+        <p class="keywords-intro">
+          Top keywords:
+          <span class="info-icon" data-tooltip="Keywords sourced from TMDb API">ⓘ</span>
+        </p>
+        <div id="societal-keywords" class="keywords-grid">
+          <span class="keyword-loading">Loading...</span>
+        </div>
+      </div>
+
+      <!-- step 8: psychological & internal horrors supergroup, highlights related bars -->
+      <div class="step with-posters" data-scene="bars_psychological" data-title="What Are We Afraid of?">
+        <h3 class="supergroup-title">Psychological & Internal Horrors</h3>
+        <p>
+          Some horrors turn fear inward. The threat emerges from the family, the mind, or the self. What terrifies us most is not the unknown, but the familiar made strange.
+        </p>
+      </div>
+
+      <!-- example movies for psychological & internal horrors: shows three representative films -->
+      <div class="movie-posters-section with-step">
+        <div class="posters-grid">
+          <!-- Possession & Loss of Agency -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BYTRiNWZlNGMtOTUwZi00ZjE4LWE1ZjEtNWE4MGQ2ZGU5NDliXkEyXkFqcGc@._V1_SX300.jpg" alt="Late Night with the Devil" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Late Night with the Devil</div>
+              <div class="poster-category-label">Possession & Loss of Agency</div>
+            </div>
+          </div>
+          
+          <!-- Isolation & Psychological Unraveling -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BYzJkNjA4MTUtNGViYi00YjM5LTg1Y2UtZjI0MzVmNzFjNzE0XkEyXkFqcGc@._V1_SX300.jpg" alt="Outback" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Outback</div>
+              <div class="poster-category-label">Isolation & Psychological Unraveling</div>
+            </div>
+          </div>
+          
+          <!-- Grief & Familial Trauma -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BNTEyZGQwODctYWJjZi00NjFmLTg3YmEtMzlhNjljOGZhMWMyXkEyXkFqcGc@._V1_SX300.jpg" alt="Hereditary" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Hereditary</div>
+              <div class="poster-category-label">Grief & Familial Trauma</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- keywords section for psychological & internal fears: dynamically filled with top keywords -->
+      <div class="keywords-section with-step">
+        <p class="keywords-intro">
+          Top keywords:
+          <span class="info-icon" data-tooltip="Keywords sourced from TMDb API">ⓘ</span>
+        </p>
+        <div id="psychological-keywords" class="keywords-grid">
+          <span class="keyword-loading">Loading...</span>
+        </div>
+      </div>
+
+      <!-- step 9: the body as battleground supergroup, highlights related bars -->
+      <div class="step with-posters" data-scene="bars_body" data-title="What Are We Afraid of?">
+        <h3 class="supergroup-title">Physical Horrors</h3>
+        <p>
+          Fear takes physical form. In captivity, contagion, and body horror, control over the body itself slips away—contaminated, fragmented, or remade.
+        </p>
+      </div>
+
+      <!-- example movies for physical horrors: shows three representative films -->
+      <div class="movie-posters-section with-step">
+        <div class="posters-grid">
+          <!-- Captivity & Voyeuristic Sadism -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTY1NDA3ODM1OV5BMl5BanBnXkFtZTcwMDM5NzEzMQ@@._V1_SX300.jpg" alt="Hostel" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Hostel</div>
+              <div class="poster-category-label">Captivity & Voyeuristic Sadism</div>
+            </div>
+          </div>
+          
+          <!-- Contagion & Mutation -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTUxMjc2MTcxNV5BMl5BanBnXkFtZTcwMzgzOTY0MQ@@._V1_SX300.jpg" alt="28 Weeks Later" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">28 Weeks Later</div>
+              <div class="poster-category-label">Contagion & Mutation</div>
+            </div>
+          </div>
+          
+          <!-- Body Horror -->
+          <div class="movie-poster-item">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTk2Mjc2NzYxNl5BMl5BanBnXkFtZTgwMTA2OTA1NDM@._V1_SX300.jpg" alt="Annihilation" class="poster-img">
+            <div class="movie-poster-info">
+              <div class="movie-title">Annihilation</div>
+              <div class="poster-category-label">Body Horror</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- keywords section for the body as battleground: dynamically filled with top keywords -->
+      <div class="keywords-section with-step">
+        <p class="keywords-intro">
+          Top keywords:
+          <span class="info-icon" data-tooltip="Keywords sourced from TMDb API">ⓘ</span>
+        </p>
+        <div id="body-keywords" class="keywords-grid">
+          <span class="keyword-loading">Loading...</span>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- scripts: d3 for visualization, app.js for main logic, text.js for narrative logic -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="./app.js"></script>
+  <script src="./text.js"></script>
+
+  <!-- methodology modal: hidden by default, shown when methodology button is clicked -->
+  <div id="methodology-modal" class="methodology-modal">
+    <div class="methodology-modal-backdrop"></div>
+    <div class="methodology-modal-box">
+      <button class="methodology-modal-close">×</button>
+      <h3>Methodology</h3>
+      <p>This project used a hybrid methodology. The taxonomy of core fear types was designed manually, drawing on scholarship that links horror to recurring human anxieties. A large-language model (LLaMA 3 8B, run locally through Ollama) was then prompted with each film’s title, synopsis, and keywords, using these definitions and labeled examples to identify the primary fear driving its horror. Model outputs were manually reviewed and refined.</p>
+      <p>Once individual films were classified, several fear types were consolidated into three higher-order supergroups—Societal & Structural Horrors, Psychological & Internal Fears, and The Body as Battleground—each representing a distinct dimension of human anxiety.</p>
+      <p>To visualize the language patterns within each supergroup, the most frequent keywords were aggregated from the IMDb API.</p>
+      <p>As with any interpretive method, the results are not objective or definitive—they offer a structured reading of how horror reimagines enduring human fears.</p>
+    </div>
+  </div>
+  
+</body>
+</html>
