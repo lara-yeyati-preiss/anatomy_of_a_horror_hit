@@ -58,7 +58,7 @@ async function main() {
   // fear category descriptions for tooltips
   const FEAR_CATEGORY_DESCRIPTIONS = {
     "Invasion, Impostors & Paranoia":
-      "Fear of being replaced, infiltrated, or observed by hidden others — aliens, doubles, or unseen conspirators disrupting normal life.",
+      "Fear of being replaced, infiltrated, or observed by hidden others — doubles, aliens, or unseen conspirators disrupting normal life.",
 
     "Persecution & Social Breakdown":
       "Fear of mob violence, cult domination, or the collapse of moral order — when collective madness replaces reason and safety.",
@@ -70,13 +70,13 @@ async function main() {
       "Fear of losing control of one's mind or body to supernatural or psychological forces — demonic, psychic, or manipulative influence.",
 
     "Captivity & Voyeuristic Sadism":
-      "Fear of imprisonment, coercion, and deliberate human cruelty — torture, rape-revenge, or sadistic games that turn pain into spectacle.",
+      "Fear of imprisonment, coercion, and deliberate human cruelty — torture or sadistic games that turn pain into spectacle.",
 
     "Contagion & Mutation":
       "Fear of infection or involuntary biological transformation — viruses, parasites, or spreading contamination altering the body.",
 
     "Body Horror":
-      "Fear of bodily invasion, forced metamorphosis, or dismemberment — the body violated or remade beyond recognition.",
+      "Fear of bodily invasion, forced metamorphosis, or dismemberment — the body manipulated or remade beyond recognition.",
 
     "Ecological / Natural Menace":
       "Fear of nature turning hostile — animals, weather, or landscapes striking back against human control and exploitation.",
@@ -85,7 +85,7 @@ async function main() {
       "Fear that solitude itself becomes the menace — prolonged isolation leading to paranoia, madness, and collapse of meaning.",
 
     "Grief & Familial Trauma":
-      "Fear rooted in loss, inheritance, or haunted domestic bonds — when family, grief, or lineage becomes the source of horror.",
+      "Fear rooted in loss, inheritance, or haunted familial bonds — when family, grief, or lineage becomes the source of horror.",
 
     "Transgression & Moral Punishment":
       "Fear of violating sacred or moral boundaries and suffering retribution — curses, pacts, or divine punishment for human sin."
