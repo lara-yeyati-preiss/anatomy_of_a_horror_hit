@@ -605,7 +605,7 @@ function focusHorror(on) {
     }
   }
 
-  /* --------------------------- bars (14 categories) ----------------------- */
+  /* --------------------------- bars (11 categories) ----------------------- */
   async function drawFearBars() {
     hideFineNote();                         // bars do not show the fine note
     if (!fearRows) fearRows = await d3.csv("./horror_categorized_clean_manualfix.csv");
@@ -622,7 +622,7 @@ function focusHorror(on) {
     svg.selectAll(".horror-center-label").remove();
 
     // filter → count → sort
-    // only the canonical 14 fear categories, ignore any others or blanks
+    // only the canonical 11 fear categories, ignore any others or blanks
     const filtered = fearRows.filter(d => FEAR_SET.has((d.Fear_Category || "").trim()));
     const counts = d3.rollups(
       filtered,
@@ -689,11 +689,13 @@ function focusHorror(on) {
       .transition().duration(600)
       .attr("width", d => xBar(d.count) - leftForBars);
 
-     // tooltips
+    // tooltips
     gChart.selectAll("rect")
       .on("mouseover", (_, d) => {
-        const displayName = getDisplayName(d.fear);
-        const description = FEAR_CATEGORY_DESCRIPTIONS[d.fear] || "";
+        const key = (d.fear || "").trim();
+        const displayName = getDisplayName(key);
+        // try the raw (trimmed) category key first, then the display name
+        const description = FEAR_CATEGORY_DESCRIPTIONS[key] || FEAR_CATEGORY_DESCRIPTIONS[displayName] || "";
         tooltip.style("opacity", 1).html(
           `<strong>${displayName}</strong><br/>
            Total movies: ${d.count}
@@ -756,7 +758,7 @@ function focusHorror(on) {
   }
 
   /* --------------------------- bars (supergroups) --------------------------- */
-  //   similar to drawFearBars but groups the 14 categories into 3 macro groups
+  //   similar to drawFearBars but groups the 11 categories into 3 macro groups
   async function drawFearBarsGrouped() {
     hideFineNote();                         // hidden for bars
     if (!fearRows) fearRows = await d3.csv("./horror_categorized_clean.csv");
@@ -909,7 +911,7 @@ function focusHorror(on) {
   //   "high-views"    : highlight only genres above the mean views line (crowd magnets + prestige)
   //   "critical-darlings" : highlight only bottom-right quadrant (high rating, low views)
   //   "horror"        : keep scatter + quadrants, but dim all non-horror bubbles
-  //   "bars"          : crossfade from scatter to the 14-category fear bar chart
+  //   "bars"          : crossfade from scatter to the 11-category fear bar chart
   //   "bars_grouped"  : crossfade to the 3-supergroup fear bar chart
   //   "grouped"       : alias for bars_grouped
   //   "noop"          : do nothing—copy-only card that doesn't change the viz
@@ -1020,7 +1022,7 @@ function focusHorror(on) {
       // title is set by applyStepTitle() from data-title="Horror in the Hit Matrix"
     }
     
-    // BARS: transition from scatter to the 14-category fear bar chart
+    // BARS: transition from scatter to the 11-category fear bar chart
     else if (scene === "bars") {
       showMethodologyBtn();  // show button for bar scenes
       // if already in bars mode, just remove any focus
@@ -1030,7 +1032,7 @@ function focusHorror(on) {
         // fade out the current scatter layers (chart, axes, legend)
         // after fade completes, draw the bar chart, then fade it in
         crossfadeOut([gChart, gAxis, gLegend], 220, d3.easeCubicOut, () => {
-          drawFearBars();                    // draws 14-category bars, hides fine note
+          drawFearBars();                    // draws 11-category bars, hides fine note
           crossfadeIn([gChart, gAxis], 260, d3.easeCubicIn);  // legend not needed for bars
         });
       }
