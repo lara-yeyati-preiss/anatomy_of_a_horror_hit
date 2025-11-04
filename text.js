@@ -212,7 +212,3 @@ function populateKeywords() {
     }
   });
 }
-
-// note: navigation functionality was removed (previously allowed switching between category views)
-// now we show aggregated supergroup keywords directly, no switching needed
-

@@ -1035,7 +1035,6 @@ html {
 }
 
 /* chart-note: small italic note for charts */
-/* styles for chart notes, typically used for disclaimers or extra info */
 .chart-note{
   font-size: 13px;
   font-style: italic;
